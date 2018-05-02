@@ -1,0 +1,49 @@
+<h1>Editing User Info</h1>
+
+
+<div id="clearance" class="sign-up">
+  <h2><%= t(".title") %></h2>
+
+  <%= form_for @user do |form| %>
+
+
+
+<div class="text-field">
+  <%= form.label :email %>
+  <%= form.text_field :email, type: 'email' %>
+</div>
+
+
+
+<div class="fname-field">
+  <%= form.label 'name' %>
+  <%= form.text_field :fname %>
+</div>
+
+<div class="text-field">
+  <%= form.label 'gender 1 = male, 0 = female' %>
+  <%= form.text_field :gender %>
+</div>
+
+<div class="text-field">
+  <%= form.label 'phone' %>
+  <%= form.text_field :phone %>
+</div>
+
+<div class="text-field">
+  <%= form.label 'country' %>
+  <%= form.text_field :country %>
+</div>
+
+<div class="file-field">
+  <%= form.file_field :avatar %>
+</div>
+
+
+    <div class="submit-field">
+      <%= form.submit %>
+    </div>
+
+
+  <% end %>
+</div>

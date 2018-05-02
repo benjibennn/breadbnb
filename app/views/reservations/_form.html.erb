@@ -1,0 +1,20 @@
+       <h1> hello </h1>
+        <%= form_for @reservation, url: {action: "create"} do |f| %>
+
+
+          <div class="field">
+            <%= f.label :check_in %>
+            <%= f.date_field :check_in %>
+          </div>
+
+          <div class="field">
+            <%= f.label :check_out %>
+            <%= f.date_field :check_out %>
+          </div>
+
+
+           <div class="actions">
+            <%= f.submit %>
+          </div>
+
+        <% end %>

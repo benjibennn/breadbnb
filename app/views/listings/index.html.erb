@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listings</h1>
+
+<%= link_to 'New Listing', new_listing_path %>
+
+<div class="container">
+  <div class="row">
+    <% @listings.each do |listing|%>
+      <div class="col-xl">
+          <div class="card" style="width: 18rem;">
+          <% if listing.images.length != 0 %>
+             <%= image_tag listing.images[0].thumb.url, class: 'card-img-top'%>
+          <% end %>
+
+              <div class="card-body">
+                <h5 class="card-title"><%= listing.name %></h5>
+                <p class="card-text">$<%= listing.price %></p>
+                <a href="/listings/<%=listing.id%>" class="btn btn-primary">View</a>
+                  <% if current_user.customer? && listing.verification != nil%>
+                     <a class="btn btn-primary"> Verified: <%= listing.verification %></a>
+                  <% elsif current_user.moderator? %>
+                     <a href="/listings/<%= listing.id %>/verify" class="btn btn-primary">Verified: <%= listing.verification %></a>
+                  <% else %>
+                      <a class="btn btn-primary"> Verified: No </a>
+                  <% end %>
+              </div>
+          </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<%= will_paginate @listings %>
+
