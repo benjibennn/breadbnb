@@ -61,3 +61,7 @@ end
   gem 'mini_magick'
   gem 'fog-aws'
   gem 'braintree'
+  gem "letter_opener", :group => :development
+  gem "mail"
+  gem 'sidekiq'
+  

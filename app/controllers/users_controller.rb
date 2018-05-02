@@ -4,11 +4,13 @@ class UsersController < Clearance::UsersController
 
 	  	@user = User.find(current_user.id)
 
+
 	end
 
 	def update
 		@user = User.find(current_user.id)
 		@user.update(user_params)
+		redirect_to '/'
 	end
 
 	private	 
