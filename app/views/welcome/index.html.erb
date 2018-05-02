@@ -1,4 +1,8 @@
+<% if signed_in? %>
 <h1>Welcome <%= current_user.fname%> </h1>
+<%else%>
+<h1> Welcome </h1>
+<% end %>
 <%= link_to "Make Payment", braintree_new_path %>
 
 <% flash.each do |key, value| %>

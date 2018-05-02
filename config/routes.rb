@@ -1,6 +1,9 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   get 'braintree/new'
   post 'braintree/checkout'
+mount Sidekiq::Web => '/sidekiq'
 
   get 'welcome/index'
 
@@ -33,3 +36,5 @@ Rails.application.routes.draw do
 
 
 end
+
+
