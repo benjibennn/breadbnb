@@ -7,7 +7,8 @@ class ReservationsController < ApplicationController
 	 	reservation.listing_id = params[:listing_id]
 	 	reservation.user_id = current_user.id
 	 	if reservation.save
-	 		ReservationMailer.booking_email(current_user,reservation.listing_id,reservation.id).deliver_now
+	 		ReservationJob.perform_later(current_user,reservation.listing_id,reservation.id)
+	 		# ReservationMailer.booking_email(current_user,reservation.listing_id,reservation.id).deliver_now
 	 		redirect_to '/'
 	 	else
 	 		flash[:overlap] = "Dates are already booked!"
