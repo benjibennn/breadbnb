@@ -65,3 +65,4 @@ end
   gem "mail"
   gem 'sidekiq'
   
+  
