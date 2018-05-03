@@ -42,9 +42,9 @@ class ListingsController < ApplicationController
 
   # GET /listings/1/edit
   def edit
-    if current_user.id != @listing.user_id
-       return redirect_to :back, notice: "Sorry. You do not have the permission to edit a property."
-    end
+    # if current_user.id != @listing.user_id
+    #    return redirect_to :back, notice: "Sorry. You do not have the permission to edit a property."
+    # end
   end
 
   # POST /listings

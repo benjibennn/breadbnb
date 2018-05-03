@@ -64,5 +64,6 @@ end
   gem "letter_opener", :group => :development
   gem "mail"
   gem 'sidekiq'
+  gem 'rails_12factor'
   
   

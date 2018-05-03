@@ -11,6 +11,9 @@
           <div class="card" style="width: 18rem;">
           <% if listing.images.length != 0 %>
              <%= image_tag listing.images[0].thumb.url, class: 'card-img-top'%>
+            <% else %>
+              <img src="http://via.placeholder.com/400x400", class="card-img-top">
+              <%# image_tag src="http://via.placeholder.com/400x400", class: 'card-img-top'%>
           <% end %>
 
               <div class="card-body">

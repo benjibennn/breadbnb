@@ -112,10 +112,11 @@
     </div>
   </div>
 </div>
-<% if current_user.id != @listing.user_id || current_user.customer? != true %>
-<%= link_to 'Back', listings_path %>
-<% else %>
-
+<% if current_user.id == @listing.user_id || current_user.moderator? %>
 <%= link_to 'Edit', edit_listing_path(@listing) %> |
 <%= link_to 'Back', listings_path %>
+<% else %>
+<%= link_to 'Back', listings_path %>
+
+
 <% end %>
