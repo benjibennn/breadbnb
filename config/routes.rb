@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   root to:"welcome#index"
   get 'about' => 'home#about', as: 'about'
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
-
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 
 end
