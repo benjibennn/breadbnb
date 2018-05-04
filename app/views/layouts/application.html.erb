@@ -7,8 +7,7 @@
       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     </head>
     <body>
-
-        <nav class="navbar navbar-expand-lg navbar-light", style = "background-color: #ff6666">
+        <nav class="navbar navbar-expand-lg navbar-light", style = "background-color: #ff6666; ">
             <a class="navbar-brand" href="#">PairBnB</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -30,44 +29,37 @@
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
               </form>
             <% if signed_in? %>
-            <% if current_user.avatar? %>
-            <%= image_tag current_user.avatar.thumb.url, class: 'rounded-circle'%>
+                <% if current_user.avatar? %>
+                  <%= image_tag current_user.avatar.thumb.url, class: 'rounded-circle'%>
+                <% end %>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Profile
+                </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <% if signed_in? %>
+                      <a class="dropdown-item" href="<%= edit_user_path(current_user.id) %>">edit profile </a>
+                    <%end %>
+                      <a class="dropdown-item" href="#">
+                        <% if signed_in? -%>
+                            <%= button_to t(".sign_out"), sign_out_path, method: :delete %>
+                        <% else -%>
+                            <%= link_to t(".sign_in"), sign_in_path %>
+                        <% end -%>
+                      </a>
+                  </div>
+              </li>
             <% end %>
-            <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Profile
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <% if signed_in? %>
-                          <a class="dropdown-item" href="<%= edit_user_path(current_user.id) %>">edit profile </a>
-                          <%end %>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-            </li>
-            <% end %>
+        </nav>
+  <%= yield %>      
 
-
-      
-    </nav>
-
-
-        <div id="header">
-          <% if signed_in? -%>
-            <%= button_to t(".sign_out"), sign_out_path, method: :delete %>
-          <% else -%>
-            <%= link_to t(".sign_in"), sign_in_path %>
-          <% end -%>
-        </div>
 
         <div id="flash">
           <% flash.each do |key, value| -%>
             <div id="flash_<%= key %>"><%=h value %></div>
           <% end %>
         </div>
-
-        <%= yield %>
+      
 
 
     </body>
