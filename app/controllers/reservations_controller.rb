@@ -8,7 +8,7 @@ class ReservationsController < ApplicationController
 	 	reservation.user_id = current_user.id
 	 	if reservation.save
 	 		ReservationJob.perform_later(current_user,reservation.listing_id,reservation.id)
-	 		redirect_to '/braintree/new'
+	 		redirect_to '/braintree/new/'+params[:listing_id]
 	 	else
 	 		flash[:overlap] = "Dates are already booked!"
 	 		redirect_to new_listing_reservation_path(params[:listing_id])

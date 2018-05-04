@@ -4,17 +4,3 @@
 
 </div> -->
  	<%= video_tag "views.mp4", autoplay: :autoplay, loop: :loop, mute: :mute, class: "video" %>
-<div class="content">
-	<div class="head">
-		<% if current_user %> 
-			<h1>Welcome <%= current_user.fname %> </h1>
-		<% end %>
-		<%= link_to "Make Payment", braintree_new_path %>
-
-		<% flash.each do |key, value| %>
-		      <div class="alert alert-<%=key%>">
-		            <%= value %>
-		      </div>
-		<% end %>
-	</div>
-</div>

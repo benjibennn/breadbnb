@@ -11,7 +11,8 @@
 	    <div id="cvv" class="hosted-field"></div>
 
 	    <%= form.hidden_field "payment_method_nonce" %>
-
+      <%= form.hidden_field :listing_id%>
+      <%= hidden_field_tag 'listing_id', params[:id] %>
 	    <div class="button-container">
 	      <%= form.submit "Purchase",  class: "btn btn-primary", id: "submit-payment-btn" %>
 	    </div>
@@ -88,6 +89,8 @@ braintree.client.create({
         // submit the form. Alternatively, you could send the nonce to your server
         // with AJAX.
         document.querySelector('input[name="checkout_form[payment_method_nonce]"]').value = payload.nonce;
+        // document.querySelector('input[name="checkout_form[listing_id]"]').value = params[:id];
+
         form.submit();
       });
     }, false);
