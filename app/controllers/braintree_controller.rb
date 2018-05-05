@@ -8,7 +8,7 @@ class BraintreeController < ApplicationController
 	  @current_listing = Listing.find(params[:listing_id]).price.to_i
 
 	  result = Braintree::Transaction.sale(
-	   :amount => @current_listing, #this is currently hardcoded
+	   :amount => @current_listing,
 	   :payment_method_nonce => nonce_from_the_client,
 	   :options => {:submit_for_settlement => true}
 	   )
