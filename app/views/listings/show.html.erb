@@ -118,10 +118,84 @@
   </div>
 </div>
 <% if current_user.id == @listing.user_id || current_user.moderator? %>
-<%= link_to 'Edit', edit_listing_path(@listing) %> |
-<%= link_to 'Back', listings_path %>
-<% else %>
+  <%= link_to 'Edit', edit_listing_path(@listing), id: "edit_page", remote: true %> |
+  <%= link_to 'Back', listings_path %>  
+  <%= link_to 'Destroy', @listing, method: :delete, data: { confirm: 'Are you sure?', class: 'delete_listing' } %>
+
+      <% else %>
+
 <%= link_to 'Back', listings_path %>
 
 
 <% end %>
+
+
+
+
+<div id="render_edit"></div>
+
+
+<!-- <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script> -->
+
+<script type="text/javascript">
+
+// console.log("hello");
+// let edit_page = $("#edit_page");
+// console.log(edit_page.serialize());
+// let id = '<%= @listing.id %>';
+
+
+// edit_page.click(function(event){
+//   console.log("page is clicekd");
+//   event.preventDefault();
+//   $.ajax({
+//     url: "listing/#{id}/edit",
+//     type: 'GET',
+//     data: this.serialize(),
+//     dataType: 'json',
+//     error: function() {
+//       console.log("something went wrong");
+//     },
+//     success: function(data) {
+//       console.log("working!!");
+//     }
+//   });
+// });
+
+
+
+
+// $("#city-search").on("keyup", function(){
+//   autocomplete()
+// });
+
+// function autocomplete(){
+//   $.ajax({
+//     url: '/listings/:id/edit',
+//     type: 'POST',
+//     data: $("#city-search").serialize(), //takes the form data and authenticity toke and converts it into a standard URL
+//     dataType: 'json', //specify what type of data you're expecting back from the servers
+//     error: function() {
+//         console.log("Something went wrong");
+//     },
+//     success: function(data) {
+//       $("#list").html("");
+
+//       data.forEach(function(element) {
+//         var option = document.createElement("option");
+//         option.value = element;
+
+//         //append option to list
+//         $("#list").append(option);
+//       });
+//     }
+//   });
+// }
+
+
+
+</script>
+

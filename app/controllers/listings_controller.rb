@@ -22,6 +22,7 @@ class ListingsController < ApplicationController
   # GET /listings/1
   # GET /listings/1.json
   def show
+    @listing = Listing.find(params[:id])
 
   end
 
@@ -45,6 +46,9 @@ class ListingsController < ApplicationController
     # if current_user.id != @listing.user_id
     #    return redirect_to :back, notice: "Sorry. You do not have the permission to edit a property."
     # end
+      respond_to do |format|
+        format.js {render layout: false} # Add this line to you respond_to block
+      end
   end
 
   # POST /listings
