@@ -108,7 +108,6 @@
     <div class="col-sm">
         <div class="reserve-details">
           <a class="btn btn-primary" href="/listings/<%=@listing.id%>/reservations/new"> Reserve Now </a>
-            <%= link_to "Make Payment", braintree_new_path %>
             <% flash.each do |key, value| %>
                   <div class="alert alert-<%=key%>">
                         <%= value %>
