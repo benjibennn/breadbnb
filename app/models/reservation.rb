@@ -10,10 +10,12 @@ def overlapping_dates
 
   	if reservation_array
 	  	reservation_array.each do |r|
-	  		if check_in < r.check_out &&  check_out > r.check_in
-		 		errors.add(:overlap, "no no")
-	  		end
+        if r.check_out != nil && r.check_in != nil
+  	  		if check_in < r.check_out &&  check_out > r.check_in
+  		 		errors.add(:overlap, "no no")
+  	  		end
+        end
 	  	end
-	end  	
+	 end  	
   end
 end

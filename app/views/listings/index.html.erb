@@ -2,6 +2,20 @@
 
 <h1>Listings</h1>
 
+
+<%= form_tag listings_path, method: :get do %>
+<p>Property Type
+  <%= text_field_tag :property_type, params[:property_type]  %>
+<p>
+Price Range <br>
+<%= number_field_tag :price, params[:price] %> to <%= number_field_tag :price1, params[:price1] %>
+
+</p>
+  <%= submit_tag "Search", :name => nil %>
+</p>
+<% end %>
+
+
 <%= link_to 'New Listing', new_listing_path %>
 
 <div class="container">

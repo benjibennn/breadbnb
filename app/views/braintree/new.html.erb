@@ -1,4 +1,4 @@
-<h1>Braintree#new</h1>
+<h1>Payment Page</h1>
 	<div class="demo-frame">
 		<%= form_for :checkout_form, url: braintree_checkout_path, html: { id: "cardForm"} do |form| %>
 		<%= form.label :card_number, "Credit Card Number", html: {class: "hosted-fields--label"} %>
@@ -11,8 +11,10 @@
 	    <div id="cvv" class="hosted-field"></div>
 
 	    <%= form.hidden_field "payment_method_nonce" %>
+      <!-- FOR LISTING ID PASSING TO NEXT PAGE -->
       <%= form.hidden_field :listing_id%>
       <%= hidden_field_tag 'listing_id', params[:id] %>
+
 	    <div class="button-container">
 	      <%= form.submit "Purchase",  class: "btn btn-primary", id: "submit-payment-btn" %>
 	    </div>
