@@ -3,10 +3,11 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-    if params == ""
-      @listings = Listing.all.order(:country).paginate(:page => params[:page], :per_page => 9)
-    else
+    # byebug
+    if !params[:property_type].blank?
       @listings = Listing.property_type(params[:property_type]).paginate(:page => params[:page], :per_page => 9)
+    else
+      @listings = Listing.all.order(:country).paginate(:page => params[:page], :per_page => 9)
     end
   end
 
